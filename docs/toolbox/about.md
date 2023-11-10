@@ -7,13 +7,13 @@ Toolbox is a framework that makes it easier to create games using Unity. Many fr
 
 Table of contents:
 
-- [Installing](toolbox/install.md)
-- [Setup](toolbox/setup.md)
-- [Toolbox Settings](toolbox/toolbox-settings.md)
-- [MonoCached](toolbox/monocached.md)
-- [Updater](toolbox/updater.md)
-- [Traveler](toolbox/traveler.md)
-- [Pooler (WIP)](toolbox/pooler.md)
-- [Messenger (WIP)](toolbox/messenger.md)
-- [Audio Player (WIP)](toolbox/audioplayer.md)
-- [Database (WIP)](toolbox/database.md)
+- [Installing](install.md)
+- [Setup](setup.md)
+- [Toolbox Settings](toolbox-settings.md)
+- [MonoCached](monocached.md)
+- [Updater](updater.md)
+- [Traveler](traveler.md)
+- [Pooler (WIP)](pooler.md)
+- [Messenger (WIP)](messenger.md)
+- [Audio Player (WIP)](audioplayer.md)
+- [Database (WIP)](database.md)

@@ -34,9 +34,9 @@ Alternative to basic Unity's `Instantiate(...)` method is `Pooler.Instantite(...
 
 ##Destroying objects
 
-IMPORTANT! Do not destroy objects you created by using `Pooler.Spawn(...)` method, use `Pooler.TryDespawn(GameObject obj)` instead. It will remove object from processing and returns it back to pool.
+<span style="color:red">IMPORTANT!</span> Do not destroy objects you created by using `Pooler.Spawn(...)` method, use `Pooler.TryDespawn(GameObject obj)` instead. It will remove object from processing and returns it back to pool. 
 
-You can also use `Pooler.DespawnOrDestroy(GameObject obj)` method, so `Pooler` decide by itself to destroy or despawn object. If object are part of any existing pool it will be despawned otherwise it will be destroyed.
+If you do not know exactly what object will you work with, use `Pooler.DespawnOrDestroy(GameObject obj)` method, so `Pooler` decide by itself to destroy or despawn object. If object are part of any existing pool it will be despawned otherwise it will be destroyed.
 
 Both methods returns bool that indicates if objects despawned or destroyed or not.
 
