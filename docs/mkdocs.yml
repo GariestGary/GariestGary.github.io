@@ -1,0 +1,34 @@
+site_name: VolumeBox
+site_author : Gadzhi Eminov
+site_description : Documentation of GitHub projects
+theme:
+  features:
+    - content.code.annotate #
+  name: material
+  logo: logo.png
+  palette:
+    primary: custom
+    accent: custom
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+nav:
+  - 'Toolbox':
+    - 'About': 'toolbox/about.md'
+    - 'Installing': 'toolbox/install.md'
+    - 'Setup': 'toolbox/setup.md'
+    - 'Toolbox Settings': 'toolbox/toolbox-settings.md'
+    - 'MonoCached': 'toolbox/monocached.md'
+    - 'Updater': 'toolbox/updater.md'
+    - 'Traveler': 'toolbox/traveler.md'
+    - 'Pooler': 'toolbox/pooler.md'
+    - 'Messenger': 'toolbox/messenger.md'
+    - 'Audio Player': 'toolbox/audioplayer.md'
+    - 'Database': 'toolbox/database.md'
