@@ -1,6 +1,10 @@
 ##Basics
 
-Let's start this topic by defining what 'Pool' means. Here you can read all about this pattern: [Object pool pattern](https://en.wikipedia.org/wiki/Object_pool_pattern). In simple words, use pool patter when you are working with a lot of instantiating and destroying objects.
+Let's start this topic by defining what 'Pool' means. Here you can read all about this pattern: 
+
+[Object pool pattern](https://en.wikipedia.org/wiki/Object_pool_pattern).
+
+ In simple words, use pool patter when you are working with a lot of instantiating and destroying objects.
 
 Toolbox has his own implementation of this pattern. Simple way you can use it is to define pools you need in [Toolbox settings](toolbox-settings.md) and call `Pooler.Spawn(...)` where you need.
 
@@ -34,9 +38,9 @@ Alternative to basic Unity's `Instantiate(...)` method is `Pooler.Instantite(...
 
 ##Destroying objects
 
-<span style="color:red">IMPORTANT!</span> Do not destroy objects you created by using `Pooler.Spawn(...)` method, use `Pooler.TryDespawn(GameObject obj)` instead. It will remove object from processing and returns it back to pool. 
+<span style="color:red">IMPORTANT!</span> Do not destroy objects that created by `Pooler.Spawn(...)` method, use `Pooler.TryDespawn(GameObject obj)` instead. It will remove object from processing and returns it back to pool. 
 
-If you do not know exactly what object will you work with, use `Pooler.DespawnOrDestroy(GameObject obj)` method, so `Pooler` decide by itself to destroy or despawn object. If object are part of any existing pool it will be despawned otherwise it will be destroyed.
+If you do not know exactly what object you are working with, use `Pooler.DespawnOrDestroy(GameObject obj)` method, so `Pooler` decides by itself to destroy or despawn object. If object are part of any existing pool it will be despawned otherwise it will be destroyed.
 
 Both methods returns bool that indicates if objects despawned or destroyed or not.
 

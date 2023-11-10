@@ -2,7 +2,7 @@
 
 Toolbox has own update system, which wraps around basic Unity's update cycle and doing his own calculations.
 
-Main component in this system is `MonoCached`, which are analogue to MonoBehaviour with some extra described below.
+`MonoCached` is the main component of this system. It is analogue to MonoBehaviour with some extra described below.
 
 `MonoCached` has same update cycle related methods, but named differently. Here are list of all "overrided" methods:
 
@@ -58,7 +58,7 @@ public class Rocket: MonoCached
             Interval = 0;
         }
 
-        //Delta time will be a sum of deltas on every frame between last call of this method and next
+        //Delta time will be a sum of deltas on every frame between last call of this method and current
         transform.position = transform.forward * speed * delta;
     }
 }
