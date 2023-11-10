@@ -1,10 +1,7 @@
-[![openupm](https://img.shields.io/npm/v/com.volumebox.toolbox?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.volumebox.toolbox/) 
-![GitHub](https://img.shields.io/github/license/GariestGary/Unity-Toolbox)
+There you can find documentation and link for all my projects :)
 
-<img src="banner.png" width=100%>
+[My GitHub Profile](https://github.com/GariestGary)
 
-Toolbox is a framework that makes it easier to create games using Unity. Many frequently used things by programmers are taken into account in the toolbox and configured in such a way as to reduce the time and number of lines of code spent on them.
-
-List of all projects:
+List of all projects documentation:
 
 - [Toolbox](toolbox/about.md)
