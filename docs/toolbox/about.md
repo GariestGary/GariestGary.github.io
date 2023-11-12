@@ -13,7 +13,7 @@ Table of contents:
 - [MonoCached](monocached.md)
 - [Updater](updater.md)
 - [Traveler](traveler.md)
-- [Pooler (WIP)](pooler.md)
+- [Pooler](pooler.md)
 - [Messenger (WIP)](messenger.md)
 - [Audio Player (WIP)](audioplayer.md)
 - [Database (WIP)](database.md)

@@ -1,10 +1,10 @@
 ##Basics
 
-Toolbox has own update system, which wraps around basic Unity's update cycle and doing his own calculations.
+Toolbox has its own update system, which wraps around [Unity's basic update cycle](https://docs.unity3d.com/Manual/ExecutionOrder.html) and doing its own calculations.
 
-`MonoCached` is the main component of this system. It is analogue to MonoBehaviour with some extra described below.
+`MonoCached` is the main component of this system. It is analogous to MonoBehaviour with some extra described below.
 
-`MonoCached` has same update cycle related methods, but named differently. Here are list of all "overrided" methods:
+`MonoCached` has same update cycle related methods, but named differently. It is closely related to [`Updater`](updater.md), so you can precisely control lifetime and update behaviour of each object. Here are list of all "overriden" method recommended to use instead:
 
 |Basic|Analogue|
 |-|-|
@@ -17,7 +17,7 @@ Toolbox has own update system, which wraps around basic Unity's update cycle and
 |`OnEnable`|`OnActivate`|
 |`OnDisable`|`OnDeactivate`|
 
-Also, `MonoCached` has methods and properties to control lifecycle:
+Also, `MonoCached` has methods and properties to control its lifecycle:
 
 |Method|Description|
 |-|-|
@@ -39,11 +39,11 @@ Here's some example:
 public class Rocket: MonoCached
 {
     private float speed = 10;
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
 
     protected override void Rise()
     {
-        sr = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected override void Tick()
