@@ -6,6 +6,7 @@ theme:
     - content.code.annotate #
   name: material
   logo: logo.png
+  favicon: logo.png
   palette:
     primary: custom
     accent: custom
@@ -23,6 +24,7 @@ nav:
   - 'Toolbox':
     - 'About': 'toolbox/about.md'
     - 'Installing': 'toolbox/install.md'
+    - 'Dependencies': 'toolbox/dependencies.md'
     - 'Setup': 'toolbox/setup.md'
     - 'Toolbox Settings': 'toolbox/toolbox-settings.md'
     - 'MonoCached': 'toolbox/monocached.md'
