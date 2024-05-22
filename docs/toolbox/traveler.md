@@ -42,7 +42,7 @@ public class PingPongSceneArgs: SceneArgs
 }
 ```
 
-In that example we're setting up enemy's speed defined by `PingPongSceneArgs`. `SceneArgs` class derived from `ScriptableObject`, so you can create some `PingPongSceneArgs` assets and bind it to difficulty buttons in your menu scene.
+In that example we're setting up enemy's speed defined by `PingPongSceneArgs`. `SceneArgs` class derived from `ScriptableObject`, so you can create multiple `PingPongSceneArgs` assets for every difficulty and bind it to difficulty buttons in your menu scene.
 
 You can also override `OnSceneUnload` method, to do some logic before scene unloads.
 
@@ -78,9 +78,30 @@ Traveler.UnloadAllScenes();
 
 This methods will also returns a UniTask.
 
+`LoadScene` method has overload, that allows you to get `SceneHandler`. So if you know which type of `SceneHandler` scene that you are loading has then you can use this type as generic:
+
+```C#
+var handler = await Traveler.LoadScene<PingPongSceneHandler>();
+```
+
+But if you want to get `SceneHandler` after opening scene you can still do that, using following syntax:
+
+```C#
+var handler = Traveler.TryGetSceneHandler<PingPongSceneHandler>();
+```
+
+or
+
+```C#
+var handlers = Traveler.TryGetAllSceneHandlers<PingPongSceneHandler>();
+```
+if you have multiple scenes with this type of handler.
+
 ##Loading order
 
 After calling `LoadScene` of [Traveler](traveler.md)'s class, it will be waiting before current operations (loading/unloading scenes) finished his work. Then scene will be loaded usually, and `SceneLoadingMessage` will be fired. After scene finished loading `SceneLoadedMessage` fires and all objects in scene will be traversed. If any object contains `SceneHandler`, then it will be initialized by [`Updater`](updater.md) and starts preparing scene. Then all objects in scene will be initialized and `SceneOpenedMessage` fires.
+
+<span style="color:red">IMPORTANT!</span> Scene handler must be a root game object in scene.
 
 On `UnloadScene` call it will be wait until current operations (loading/unloading scenes) done it's work. Then `SceneUnloadingMessage` fires, if `SceneHandler` on this scene exists, then `OnSceneUnload` method invokes and all objects in scene removes from [`Updater`](updater.md) processing. Finally, it unloads scene usually, waits for it's finish and fires `SceneUnloadedMessage`.
 

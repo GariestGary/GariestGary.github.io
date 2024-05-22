@@ -42,12 +42,6 @@ Alternatively, merge the snippet to Packages/manifest.json
 * add following scopes:
 
     `com.volumebox.toolbox`
-  
-    `com.dbrizov`
-  
-    `com.solidalloy`
-    
-    `org.nuget`
 	
 	`com.cysharp`
   

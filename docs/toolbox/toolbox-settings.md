@@ -1,11 +1,10 @@
 From this window you can adjust main settings, edit initial pools, set up audios and edit properties in database.
 
-'Toolbox Settings' window has four tabs:
+'Toolbox Settings' window has three tabs:
 
 - Main Settings
 - Pooler
 - Audio Player
-- Database
 
 Let's look all them.
 
@@ -20,14 +19,12 @@ There you can edit following properties:
 - `Target Frame Rate`: Default target frame rate option, which will be setted at startup.
 - `Initial Scene Name`: The scene that will be loaded first after `MAIN` scene loaded.
 - `Initial Scene Args`: Arguments for initial scene.
-- `Manual Fade Out`: If enabled, then you can manually control when black screen will be faded out after initial scene loaded, otherwise Toolbox automatically fades it out right after initial scene loaded.
-- `Fade Out Duration`: Simply controls fade out duration when `Manual Fade Out` disabled.
 
 ###Pooler
 
 <img src="pooler_empty.png">
 
-From this window you can edit initial pools list and adjust properties of each.
+From this window you can edit initial pools list, adjust properties of each and set garbage collector interval.
 
 You can create new pool by clicking 'Add Pool' button.
 
@@ -43,7 +40,7 @@ Each pool has following parameters:
 
 To delete pool, simply click button with trash icon.
 
-You can also search necessary pool by writing its tag in search field.
+You can search necessary pool by writing its tag in search field.
 
 ###Audio Player
 
@@ -72,34 +69,8 @@ Each clip has following parameters:
 - `Clip ID`: ID of the clip, through which you can retrieve it.
 - `Audio Clip`: Actual audio clip asset.
 
-<img src="database_filled.png">
+<img src="audio_player_filled.png">
 
 To delete clip click button with trash icon.
 
-###Database
-
-From this window you can define database for your project.
-If you opening it first time it will look like this:
-
-<img src="database.png">
-
-To create new database right click in project window and go to `Create/Toolbox/Properties Database`.
-It will create new scriptable object with all variables in it.
-Rename it as you wish and drag into 'Properties' fieeld in 'Database' tab of Toolbox Settings window.
-After adding database you can define your propertiess.
-
-<img src="database_added.png">
-
-To add new property click '+' button.
-
-<img src="database_property_added.png">
-
-Each property has following parameters:
-
-- `ID`: ID of the property, through which you can retrieve it.
-- `Type`: Type of the property. Can be one of the following: `Bool`, `Float`, `Int`, `Vector2`, `Vector3`, `Vector4`, `String`.
-- `Value`: Actual value of the property.
-
-<img src="database_filled.png">
-
-To delete property click button with trash icon.
+You can search necessary album by writing its name in search field.
