@@ -33,3 +33,4 @@ nav:
     - 'Pooler': 'toolbox/pooler.md'
     - 'Messenger': 'toolbox/messenger.md'
     - 'Audio Player': 'toolbox/audioplayer.md'
+    - 'Using along with DI solutions': 'toolbox/di.md'

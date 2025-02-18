@@ -19,8 +19,8 @@
         <link rel="next" href="../updater/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -69,7 +69,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
-    
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -120,6 +119,7 @@
     </div>
     
       
+    
     
     
     
@@ -203,6 +203,7 @@
     
   
   
+  
     
     
     
@@ -239,6 +240,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../about/" class="md-nav__link">
         
@@ -256,6 +258,7 @@
             
               
                 
+  
   
   
   
@@ -279,6 +282,28 @@
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../dependencies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependencies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../setup/" class="md-nav__link">
         
@@ -296,6 +321,7 @@
             
               
                 
+  
   
   
   
@@ -319,6 +345,7 @@
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -363,7 +390,9 @@
       
         <li class="md-nav__item">
   <a href="#basics" class="md-nav__link">
-    Basics
+    <span class="md-ellipsis">
+      Basics
+    </span>
   </a>
   
 </li>
@@ -379,6 +408,7 @@
             
               
                 
+  
   
   
   
@@ -402,6 +432,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../traveler/" class="md-nav__link">
         
@@ -419,6 +450,7 @@
             
               
                 
+  
   
   
   
@@ -442,6 +474,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../messenger/" class="md-nav__link">
         
@@ -459,6 +492,7 @@
             
               
                 
+  
   
   
   
@@ -482,12 +516,13 @@
   
   
   
+  
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../di/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Database
+    Using along with DI solutions
   </span>
   
 
@@ -530,7 +565,9 @@
       
         <li class="md-nav__item">
   <a href="#basics" class="md-nav__link">
-    Basics
+    <span class="md-ellipsis">
+      Basics
+    </span>
   </a>
   
 </li>
@@ -553,9 +590,9 @@
   <h1>MonoCached</h1>
 
 <h2 id="basics">Basics</h2>
-<p>Toolbox has own update system, which wraps around basic Unity's update cycle and doing his own calculations.</p>
-<p>Main component in this system is <code>MonoCached</code>, which are analogue to MonoBehaviour with some extra described below.</p>
-<p><code>MonoCached</code> has same update cycle related methods, but named differently. Here are list of all "overrided" methods:</p>
+<p>Toolbox has its own update system, which wraps around <a href="https://docs.unity3d.com/Manual/ExecutionOrder.html">Unity's basic update cycle</a> and performs its own calculations.</p>
+<p><code>MonoCached</code> is the main component of this system. It is analogous to MonoBehaviour with some extra features described below.</p>
+<p><code>MonoCached</code> has the same update cycle-related methods, but they are named differently. It is closely related to <a href="../updater/"><code>Updater</code></a>, so you can precisely control the lifetime and update behavior of each object. Here is a list of all "overridden" methods recommended for use instead:</p>
 <table>
 <thead>
 <tr>
@@ -598,7 +635,7 @@
 </tr>
 </tbody>
 </table>
-<p>Also, <code>MonoCached</code> has methods and properties to control lifecycle:</p>
+<p>Additionally, <code>MonoCached</code> has methods and properties to control its lifecycle:</p>
 <table>
 <thead>
 <tr>
@@ -609,58 +646,58 @@
 <tbody>
 <tr>
 <td><code>Pause</code></td>
-<td>Pauses execution of <code>Tick</code>, <code>FixedTick</code> and <code>LateTick</code> methods</td>
+<td>Pauses the execution of <code>Tick</code>, <code>FixedTick</code>, and <code>LateTick</code> methods.</td>
 </tr>
 <tr>
 <td><code>Resume</code></td>
-<td>Resumes execution of <code>Tick</code>, <code>FixedTick</code> and <code>LateTick</code> methods</td>
+<td>Resumes the execution of <code>Tick</code>, <code>FixedTick</code>, and <code>LateTick</code> methods.</td>
 </tr>
 <tr>
 <td><code>EnableGameObject</code></td>
-<td>Enables <code>gameObject</code> on which component placed</td>
+<td>Enables the <code>gameObject</code> on which the component is placed.</td>
 </tr>
 <tr>
 <td><code>DisableGameObject</code></td>
-<td>Disables <code>gameObject</code> on which component placed</td>
+<td>Disables the <code>gameObject</code> on which the component is placed.</td>
 </tr>
 <tr>
 <td><code>ProcessIfInactiveSelf</code></td>
-<td>Bool property. If enabled, then <code>Tick</code>, <code>FixedTick</code> and <code>LateTick</code> methods will be executed even if gameObject inactive self</td>
+<td>Bool property. If enabled, <code>Tick</code>, <code>FixedTick</code>, and <code>LateTick</code> methods will be executed even if the <code>gameObject</code> is inactive self.</td>
 </tr>
 <tr>
 <td><code>ProcessIfInactiveInHierarchy</code></td>
-<td>Bool property. If enabled, then <code>Tick</code>, <code>FixedTick</code> and <code>LateTick</code> methods will be executed even if gameObject inactive in hierarchy</td>
+<td>Bool property. If enabled, <code>Tick</code>, <code>FixedTick</code>, and <code>LateTick</code> methods will be executed even if the <code>gameObject</code> is inactive in the hierarchy.</td>
 </tr>
 <tr>
 <td><code>delta</code></td>
-<td>Float property. Delta time, controlled by timescale, interval etc</td>
+<td>Float property. Delta time, controlled by timescale, interval, etc.</td>
 </tr>
 <tr>
 <td><code>fixedDelta</code></td>
-<td>Float property. Fixed delta time, controlled by timescale, interval etc</td>
+<td>Float property. Fixed delta time, controlled by timescale, interval, etc.</td>
 </tr>
 <tr>
 <td><code>Interval</code></td>
-<td>Float property. Sets the interval between calling <code>Tick</code>, <code>FixedTick</code> and <code>LateTick</code> methods. Delta time then will be a sum of deltas between last call and next. If setted to 0, then it works usually</td>
+<td>Float property. Sets the interval between calling <code>Tick</code>, <code>FixedTick</code>, and <code>LateTick</code> methods. Delta time will then be the sum of deltas between the last call and the next. If set to 0, it works as usual.</td>
 </tr>
 </tbody>
 </table>
-<p>To use full power of 'Toolbox', just derive your class from <code>MonoCached</code> and override method you need.</p>
-<p>Here's some example:</p>
-<div class="language-C# highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rocket</span><span class="p">:</span><span class="w"> </span><span class="n">MonoCached</span>
+<p>To utilize the full power of 'Toolbox', simply derive your class from <code>MonoCached</code> and override the methods you need.</p>
+<p>Here's an example:</p>
+<div class="language-C# highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rocket</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoCached</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">SpriteRenderer</span><span class="w"> </span><span class="n">sr</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">SpriteRenderer</span><span class="w"> </span><span class="n">spriteRenderer</span><span class="p">;</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Rise</span><span class="p">()</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">SpriteRenderer</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">spriteRenderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">SpriteRenderer</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Tick</span><span class="p">()</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="c1">//Here we reducing update calls if we don&#39;t see the object</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="cm">/*There are some logic to check if object is out of screen*/</span><span class="p">)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="c1">// Here we reduce update calls if we don&#39;t see the object</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="cm">/* There is some logic to check if the object is out of the screen */</span><span class="p">)</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">{</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="n">Interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">}</span>
@@ -669,12 +706,19 @@
 </span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="n">Interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="c1">//Delta time will be a sum of deltas on every frame between last call of this method and next</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="c1">// Delta time will be the sum of deltas on every frame between the last call of this method and the current</span>
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">forward</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">delta</span><span class="p">;</span>
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Because of <code>MonoCached</code> derived from MonoBehaviour you can still use <code>Awake</code>, <code>Update</code>, etc...</p>
+<p>Because <code>MonoCached</code> is derived from MonoBehaviour, you can still use <code>Awake</code>, <code>Update</code>, etc.</p>
+
+
+
+
+
+
+
 
 
 
@@ -685,6 +729,7 @@
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -713,10 +758,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
       
     
   </body>

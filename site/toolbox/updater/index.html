@@ -19,8 +19,8 @@
         <link rel="next" href="../traveler/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -69,7 +69,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
-    
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -115,6 +114,7 @@
     </div>
     
       
+    
     
     
     
@@ -198,6 +198,7 @@
     
   
   
+  
     
     
     
@@ -234,6 +235,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../about/" class="md-nav__link">
         
@@ -251,6 +253,7 @@
             
               
                 
+  
   
   
   
@@ -274,6 +277,28 @@
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../dependencies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependencies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../setup/" class="md-nav__link">
         
@@ -291,6 +316,7 @@
             
               
                 
+  
   
   
   
@@ -314,6 +340,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../monocached/" class="md-nav__link">
         
@@ -334,6 +361,7 @@
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -362,6 +390,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../traveler/" class="md-nav__link">
         
@@ -379,6 +408,7 @@
             
               
                 
+  
   
   
   
@@ -402,6 +432,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../messenger/" class="md-nav__link">
         
@@ -419,6 +450,7 @@
             
               
                 
+  
   
   
   
@@ -442,12 +474,13 @@
   
   
   
+  
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../di/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Database
+    Using along with DI solutions
   </span>
   
 
@@ -497,8 +530,8 @@
 
   <h1>Updater</h1>
 
-<p><code>Updater</code> is a base class for process and initialize <a href="../monocached/"><code>MonoCached</code></a> classes. Also you can control time scale for all monos independently of basic Unity's time scale. You can get access to delta time impacted by setted time scale.</p>
-<p>Here's list of all methods and properties available for managing objects:</p>
+<p><code>Updater</code> is a base class for processing and initializing <a href="../monocached/"><code>MonoCached</code></a> classes. It also allows you to control the time scale for all monos independently of Unity's basic time scale. You can access delta time impacted by the set time scale.</p>
+<p>Here is a list of all methods and properties available for managing objects:</p>
 <table>
 <thead>
 <tr>
@@ -509,38 +542,45 @@
 <tbody>
 <tr>
 <td><code>UnscaledDelta</code></td>
-<td>Returns default <code>Time.deltaTime</code></td>
+<td>Returns the default <code>Time.deltaTime</code>.</td>
 </tr>
 <tr>
 <td><code>TimeScale</code></td>
-<td>Returns current <code>Updater</code>'s time scale, or sets it to value between 0 and infinite</td>
+<td>Returns the current <code>Updater</code>'s time scale or sets it to a value between 0 and infinity.</td>
 </tr>
 <tr>
 <td><code>Delta</code></td>
-<td>Returns current delta time multiplied by <code>Updater</code>'s time scale</td>
+<td>Returns the current delta time multiplied by the <code>Updater</code>'s time scale.</td>
 </tr>
 <tr>
 <td><code>InitializeObjects(GameObject[] objs)</code></td>
-<td>Invokes Rise and Ready on given GameObjects, and then adds them to process</td>
+<td>Invokes <code>Rise</code> and <code>Ready</code> on the given GameObjects and then adds them to the process.</td>
 </tr>
 <tr>
 <td><code>RemoveObjectsFromUpdate(GameObject[] objs)</code></td>
-<td>Removes all GameObjects from process</td>
+<td>Removes all given GameObjects from the process.</td>
 </tr>
 <tr>
 <td><code>InitializeObject(GameObject obj)</code></td>
-<td>Invokes Rise and Ready on given GameObject, and then adds it to process</td>
+<td>Invokes <code>Rise</code> and <code>Ready</code> on the given GameObject and then adds it to the process.</td>
 </tr>
 <tr>
 <td><code>InitializeMono(MonoCached mono)</code></td>
-<td>Invokes Rise and Ready on given MonoCached, and then adds it to process</td>
+<td>Invokes <code>Rise</code> and <code>Ready</code> on the given <code>MonoCached</code> and then adds it to the process.</td>
 </tr>
 <tr>
 <td><code>RemoveMonoFromUpdate(MonoCached mono)</code></td>
-<td>Removes given MonoCached from process</td>
+<td>Removes the given <code>MonoCached</code> from the process.</td>
 </tr>
 </tbody>
 </table>
+
+
+
+
+
+
+
 
 
 
@@ -551,6 +591,7 @@
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -579,10 +620,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
       
     
   </body>

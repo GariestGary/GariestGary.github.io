@@ -1,42 +1,42 @@
-##Basics
+## Basics
 
-Toolbox has its own update system, which wraps around [Unity's basic update cycle](https://docs.unity3d.com/Manual/ExecutionOrder.html) and doing its own calculations.
+Toolbox has its own update system, which wraps around [Unity's basic update cycle](https://docs.unity3d.com/Manual/ExecutionOrder.html) and performs its own calculations.
 
-`MonoCached` is the main component of this system. It is analogous to MonoBehaviour with some extra described below.
+`MonoCached` is the main component of this system. It is analogous to MonoBehaviour with some extra features described below.
 
-`MonoCached` has same update cycle related methods, but named differently. It is closely related to [`Updater`](updater.md), so you can precisely control lifetime and update behaviour of each object. Here are list of all "overriden" method recommended to use instead:
+`MonoCached` has the same update cycle-related methods, but they are named differently. It is closely related to [`Updater`](updater.md), so you can precisely control the lifetime and update behavior of each object. Here is a list of all "overridden" methods recommended for use instead:
 
-|Basic|Analogue|
-|-|-|
-|`Awake`|`Rise`|
-|`Start`|`Ready`|
-|`Update`|`Tick`|
-|`FixedUpdate`|`FixedTick`|
-|`LateUpdate`|`LateTick`|
-|`OnDestroy`|`Destroyed`|
-|`OnEnable`|`OnActivate`|
-|`OnDisable`|`OnDeactivate`|
+| Basic       | Analogue   |
+|-------------|------------|
+| `Awake`     | `Rise`     |
+| `Start`     | `Ready`    |
+| `Update`    | `Tick`     |
+| `FixedUpdate` | `FixedTick` |
+| `LateUpdate` | `LateTick` |
+| `OnDestroy` | `Destroyed` |
+| `OnEnable`  | `OnActivate` |
+| `OnDisable` | `OnDeactivate` |
 
-Also, `MonoCached` has methods and properties to control its lifecycle:
+Additionally, `MonoCached` has methods and properties to control its lifecycle:
 
-|Method|Description|
-|-|-|
-|`Pause`|Pauses execution of `Tick`, `FixedTick` and `LateTick` methods|
-|`Resume`|Resumes execution of `Tick`, `FixedTick` and `LateTick` methods|
-|`EnableGameObject`|Enables `gameObject` on which component placed|
-|`DisableGameObject`|Disables `gameObject` on which component placed|
-|`ProcessIfInactiveSelf`|Bool property. If enabled, then `Tick`, `FixedTick` and `LateTick` methods will be executed even if gameObject inactive self|
-|`ProcessIfInactiveInHierarchy`|Bool property. If enabled, then `Tick`, `FixedTick` and `LateTick` methods will be executed even if gameObject inactive in hierarchy|
-|`delta`|Float property. Delta time, controlled by timescale, interval etc|
-|`fixedDelta`|Float property. Fixed delta time, controlled by timescale, interval etc|
-|`Interval`|Float property. Sets the interval between calling `Tick`, `FixedTick` and `LateTick` methods. Delta time then will be a sum of deltas between last call and next. If setted to 0, then it works usually|
+| Method                     | Description                                                                                     |
+|----------------------------|-------------------------------------------------------------------------------------------------|
+| `Pause`                   | Pauses the execution of `Tick`, `FixedTick`, and `LateTick` methods.                          |
+| `Resume`                  | Resumes the execution of `Tick`, `FixedTick`, and `LateTick` methods.                         |
+| `EnableGameObject`        | Enables the `gameObject` on which the component is placed.                                    |
+| `DisableGameObject`       | Disables the `gameObject` on which the component is placed.                                   |
+| `ProcessIfInactiveSelf`   | Bool property. If enabled, `Tick`, `FixedTick`, and `LateTick` methods will be executed even if the `gameObject` is inactive self. |
+| `ProcessIfInactiveInHierarchy` | Bool property. If enabled, `Tick`, `FixedTick`, and `LateTick` methods will be executed even if the `gameObject` is inactive in the hierarchy. |
+| `delta`                   | Float property. Delta time, controlled by timescale, interval, etc.                             |
+| `fixedDelta`              | Float property. Fixed delta time, controlled by timescale, interval, etc.                     |
+| `Interval`                | Float property. Sets the interval between calling `Tick`, `FixedTick`, and `LateTick` methods. Delta time will then be the sum of deltas between the last call and the next. If set to 0, it works as usual. |
 
-To use full power of 'Toolbox', just derive your class from `MonoCached` and override method you need.
+To utilize the full power of 'Toolbox', simply derive your class from `MonoCached` and override the methods you need.
 
-Here's some example:
+Here's an example:
 
 ```C#
-public class Rocket: MonoCached
+public class Rocket : MonoCached
 {
     private float speed = 10;
     private SpriteRenderer spriteRenderer;
@@ -48,8 +48,8 @@ public class Rocket: MonoCached
 
     protected override void Tick()
     {
-        //Here we reducing update calls if we don't see the object
-        if(/*There are some logic to check if object is out of screen*/)
+        // Here we reduce update calls if we don't see the object
+        if (/* There is some logic to check if the object is out of the screen */)
         {
             Interval = 1;
         }
@@ -58,10 +58,10 @@ public class Rocket: MonoCached
             Interval = 0;
         }
 
-        //Delta time will be a sum of deltas on every frame between last call of this method and current
+        // Delta time will be the sum of deltas on every frame between the last call of this method and the current
         transform.position = transform.forward * speed * delta;
     }
 }
 ```
 
-Because of `MonoCached` derived from MonoBehaviour you can still use `Awake`, `Update`, etc...
+Because `MonoCached` is derived from MonoBehaviour, you can still use `Awake`, `Update`, etc.

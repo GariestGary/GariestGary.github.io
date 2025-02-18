@@ -1,14 +1,14 @@
-`Updater` is a base class for process and initialize [`MonoCached`](monocached.md) classes. Also you can control time scale for all monos independently of basic Unity's time scale. You can get access to delta time impacted by setted time scale.
+`Updater` is a base class for processing and initializing [`MonoCached`](monocached.md) classes. It also allows you to control the time scale for all monos independently of Unity's basic time scale. You can access delta time impacted by the set time scale.
 
-Here's list of all methods and properties available for managing objects:
+Here is a list of all methods and properties available for managing objects:
 
-|Method|Description|
-|-|-|
-|`UnscaledDelta`|Returns default `Time.deltaTime`|
-|`TimeScale`|Returns current `Updater`'s time scale, or sets it to value between 0 and infinite|
-|`Delta`|Returns current delta time multiplied by `Updater`'s time scale|
-|`InitializeObjects(GameObject[] objs)`|Invokes Rise and Ready on given GameObjects, and then adds them to process|
-|`RemoveObjectsFromUpdate(GameObject[] objs)`|Removes all GameObjects from process|
-|`InitializeObject(GameObject obj)`|Invokes Rise and Ready on given GameObject, and then adds it to process|
-|`InitializeMono(MonoCached mono)`|Invokes Rise and Ready on given MonoCached, and then adds it to process|
-|`RemoveMonoFromUpdate(MonoCached mono)`|Removes given MonoCached from process|
+| Method                         | Description                                                                                     |
+|--------------------------------|-------------------------------------------------------------------------------------------------|
+| `UnscaledDelta`                | Returns the default `Time.deltaTime`.                                                           |
+| `TimeScale`                    | Returns the current `Updater`'s time scale or sets it to a value between 0 and infinity.       |
+| `Delta`                        | Returns the current delta time multiplied by the `Updater`'s time scale.                      |
+| `InitializeObjects(GameObject[] objs)` | Invokes `Rise` and `Ready` on the given GameObjects and then adds them to the process.         |
+| `RemoveObjectsFromUpdate(GameObject[] objs)` | Removes all given GameObjects from the process.                                                |
+| `InitializeObject(GameObject obj)` | Invokes `Rise` and `Ready` on the given GameObject and then adds it to the process.             |
+| `InitializeMono(MonoCached mono)` | Invokes `Rise` and `Ready` on the given `MonoCached` and then adds it to the process.           |
+| `RemoveMonoFromUpdate(MonoCached mono)` | Removes the given `MonoCached` from the process.                                                |
