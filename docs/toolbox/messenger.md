@@ -78,7 +78,7 @@ If you often send a one type of message with different data, you can cache it an
 ```C#
 ...
 
-private GainedXPMessage m_GainedXPMessage = new GainedXPMessage();
+private GainedXPMessage _gainedXPMessage = new GainedXPMessage();
 
 ...
 
@@ -89,7 +89,7 @@ public void OnXpGained(int amount)
     //update message's variable
     m_GainedXPMessage.amount = amount; 
     //then send a message
-    Toolbox.Messenger.Send(m_GainedXPMessage);
+    Toolbox.Messenger.Send(_gainedXPMessage);
 }
 
 ...

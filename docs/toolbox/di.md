@@ -44,23 +44,23 @@ If you want to use parts of the Toolbox as dependencies to inject, here's a guid
     ```C#
     public class MainBootstrapper : MonoBehaviour
     {
-        [Inject] private ToolboxEntry _Entry;
-        [Inject] private Pooler _Pool;
-        [Inject] private DiContainer _Container;
+        [Inject] private ToolboxEntry _entry;
+        [Inject] private Pooler _pool;
+        [Inject] private DiContainer _container;
 
         private void Awake()
         {
-            _Pool.SetSpawnAction(OnGameObjectSpawn);
+            _pool.SetSpawnAction(OnGameObjectSpawn);
         }
 
         private void Start()
         {
-            _Entry.Init().Forget();
+            _entry.Init().Forget();
         }
 
         private void OnGameObjectSpawn(GameObject go)
         {
-            _Container.InjectGameObject(go);
+            _container.InjectGameObject(go);
         }
     }
     ```

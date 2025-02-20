@@ -28,11 +28,11 @@ Here's an example:
 ```C#
 public class PingPongSceneHandler : SceneHandler<PingPongSceneArgs>
 {
-    [SerializeField] private Enemy m_Enemy;
+    [SerializeField] private Enemy _enemy;
 
     protected override void SetupScene(PingPongSceneArgs args)
     {
-        m_Enemy.SetSpeed(args.EnemySpeed);
+        _enemy.SetSpeed(args.EnemySpeed);
     }
 }
 
