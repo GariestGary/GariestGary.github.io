@@ -27,8 +27,8 @@ To subscribe to a message, you need provide its type and a callback to a `Messen
 
 protected override void Rise()
 {
-    Messenger.Subscribe<PlayerReloadingMessage>(_ => OnPlayerReloading());
-    Messenger.Subscribe<EnemyDiedMessage>(m => OnEnemyDied(m));
+    Toolbox.Messenger.Subscribe<PlayerReloadingMessage>(_ => OnPlayerReloading());
+    Toolbox.Messenger.Subscribe<EnemyDiedMessage>(m => OnEnemyDied(m));
 }
 
 private void OnPlayerReloading()
@@ -55,7 +55,7 @@ If you do not have additional data to provide with message, you can just provide
 ```C#
 ...
 
-Messenger.Send<PlayerReloadingMessage>();
+Toolbox.Messenger.Send<PlayerReloadingMessage>();
 
 ...
 ```
@@ -66,7 +66,7 @@ If you want to pass additional data to a message, you need to create an instance
 ```C#
 ...
 
-Messenger.Send(new EnemyDiedMessage { enemy = this });
+Toolbox.Messenger.Send(new EnemyDiedMessage { enemy = this });
 
 ...
 ```
@@ -89,7 +89,7 @@ public void OnXpGained(int amount)
     //update message's variable
     m_GainedXPMessage.amount = amount; 
     //then send a message
-    Messenger.Send(m_GainedXPMessage);
+    Toolbox.Messenger.Send(m_GainedXPMessage);
 }
 
 ...
@@ -100,5 +100,5 @@ public void OnXpGained(int amount)
 You can bind your subscribe to a gameobject lifetime, so it will be automatically removed if gameobject destroyed to prevent memory leaks and errors. Just provide gameobject you want to bind as second parameter.
 
 ```C#
-Messenger.Subscribe<PlayerReloadingMessage>(_ => OnPlayerReloading, gameObject);
+Toolbox.Messenger.Subscribe<PlayerReloadingMessage>(_ => OnPlayerReloading, gameObject);
 ```

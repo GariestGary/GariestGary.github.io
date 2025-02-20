@@ -488,6 +488,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#spawn-and-instantiate-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawn and instantiate actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#destroying-objects" class="md-nav__link">
     <span class="md-ellipsis">
       Destroying objects
@@ -654,6 +663,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#spawn-and-instantiate-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawn and instantiate actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#destroying-objects" class="md-nav__link">
     <span class="md-ellipsis">
       Destroying objects
@@ -706,7 +724,7 @@
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Shoot</span><span class="p">()</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">{</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">bullet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pooler</span><span class="p">.</span><span class="n">Spawn</span><span class="p">(</span><span class="s">&quot;Bullet&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">currentWeapon</span><span class="p">.</span><span class="n">tip</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">).</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Bullet</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">bullet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Toolbox</span><span class="p">.</span><span class="n">Pooler</span><span class="p">.</span><span class="n">Spawn</span><span class="p">(</span><span class="s">&quot;Bullet&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">currentWeapon</span><span class="p">.</span><span class="n">tip</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">).</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Bullet</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">bullet</span><span class="p">.</span><span class="n">StartMovingForward</span><span class="p">();</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
@@ -736,7 +754,41 @@
 <p><img src="scene_pool.png"></p>
 <h2 id="creating-objects">Creating objects</h2>
 <p>It is recommended to create all objects by using <code>Pooler</code>, because it works with <a href="../updater/"><code>Updater</code></a> and initializes objects to work properly with Toolbox.</p>
-<p>An alternative to Unity's basic <code>Instantiate(...)</code> method is <code>Pooler.Instantiate(...)</code>. Use it when you need to create an object without using a pool.</p>
+<p>An alternative to Unity's basic <code>Instantiate(...)</code> method is <code>Pooler.Create(...)</code>. Use it when you need to create an object without using a pool.</p>
+<h2 id="spawn-and-instantiate-actions">Spawn and instantiate actions</h2>
+<p>If you want to make preparations to game objects every time they spawn or only when they are initially created, you can use the following methods:</p>
+<ul>
+<li>
+<p><code>SetSpawnAction</code>: Provides the game object right before it spawns from the pooler.</p>
+<div class="language-C# highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">...</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">_Pool</span><span class="p">.</span><span class="n">SetSpawnAction</span><span class="p">(</span><span class="n">OnGameObjectSpawn</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnGameObjectSpawn</span><span class="p">(</span><span class="n">GameObject</span><span class="w"> </span><span class="n">go</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="c1">// Perform spawn setup for the game object</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">...</span>
+</span></code></pre></div>
+</li>
+<li>
+<p><code>SetInstantiateAction</code>: Provides the game object right before it is added to the pool. This occurs when the pooler initializes and creates game objects to fill its size, and when you are out of pooled objects and need to create a new game object.</p>
+<div class="language-C# highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">_Pool</span><span class="p">.</span><span class="n">SetInstantiateAction</span><span class="p">(</span><span class="n">OnGameObjectInstantiate</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnGameObjectInstantiate</span><span class="p">(</span><span class="n">GameObject</span><span class="w"> </span><span class="n">go</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1">// Perform initial setup for the game object</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</span></code></pre></div>
+</li>
+</ul>
 <h2 id="destroying-objects">Destroying objects</h2>
 <p><span style="color:red">IMPORTANT!</span> Do not destroy objects that are created by the <code>Pooler.Spawn(...)</code> method, use <code>Pooler.TryDespawn(GameObject obj)</code> instead. It will remove the object from processing and return it back to the pool.</p>
 <p>If you do not know exactly what object you are working with, use the <code>Pooler.DespawnOrDestroy(GameObject obj)</code> method, so <code>Pooler</code> decides for itself whether to destroy or despawn the object. If the object is part of any existing pool, it will be despawned; otherwise, it will be destroyed.</p>

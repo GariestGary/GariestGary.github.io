@@ -52,14 +52,14 @@ You can also override the `OnUnloadCallback` method to perform some logic before
 To load a scene, simply call:
 
 ```C#
-Traveler.LoadScene("MySceneName", new MySceneArgs { data = "Hello World!" });
+Toolbox.Traveler.LoadScene("MySceneName", new MySceneArgs { data = "Hello World!" });
 ```
 
 This method returns a UniTask, so you can await it to manage your calls if needed:
 
 ```C#
 await Fader.In(0.2f);
-await Traveler.LoadScene("MySceneName");
+await Toolbox.Traveler.LoadScene("MySceneName");
 await Fader.Out(0.2f);
 ```
 
@@ -68,13 +68,13 @@ await Fader.Out(0.2f);
 To unload a scene, simply call:
 
 ```C#
-Traveler.UnloadScene("MySceneName");
+Toolbox.Traveler.UnloadScene("MySceneName");
 ```
 
 You can also unload all scenes except `MAIN` by calling:
 
 ```C#
-Traveler.UnloadAllScenes();
+Toolbox.Traveler.UnloadAllScenes();
 ```
 
 These methods also return a UniTask.
@@ -82,19 +82,19 @@ These methods also return a UniTask.
 The `LoadScene` method has an overload that allows you to get the `SceneHandler`. If you know the type of `SceneHandler` for the scene you are loading, you can use this type as a generic:
 
 ```C#
-var handler = await Traveler.LoadScene<PingPongSceneHandler>();
+var handler = await Toolbox.Traveler.LoadScene<PingPongSceneHandler>();
 ```
 
 If you want to get the `SceneHandler` after opening a scene, you can still do that using the following syntax:
 
 ```C#
-var handler = Traveler.TryGetSceneHandler<PingPongSceneHandler>();
+var handler = Toolbox.Traveler.TryGetSceneHandler<PingPongSceneHandler>();
 ```
 
 or
 
 ```C#
-var handlers = Traveler.TryGetAllSceneHandlers<PingPongSceneHandler>();
+var handlers = Toolbox.Traveler.TryGetAllSceneHandlers<PingPongSceneHandler>();
 ```
 
 if you have multiple scenes with this type of handler.

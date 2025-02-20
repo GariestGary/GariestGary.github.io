@@ -18,7 +18,7 @@ On the `Toolbox Entry` component of the 'Toolbox Container' game object, make su
 
 After all preparations are completed, you can open 'Toolbox Settings' by clicking 'Open Toolbox Settings' or accessing it from `Toolbox/Settings`.
 
-To gain access to Toolbox's components, use `Toolbox.Instance.[Class_You_Need]`.
+To gain access to Toolbox's components, use `Toolbox.[Class_You_Need]`.
 
 Here are the classes available:
 

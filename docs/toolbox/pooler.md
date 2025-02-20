@@ -13,7 +13,7 @@ Toolbox has its own implementation of this pattern. A simple way you can use it 
 
 public void Shoot()
 {
-    var bullet = Pooler.Spawn("Bullet", currentWeapon.tip.position, Quaternion.identity).GetComponent<Bullet>();
+    var bullet = Toolbox.Pooler.Spawn("Bullet", currentWeapon.tip.position, Quaternion.identity).GetComponent<Bullet>();
     bullet.StartMovingForward();
 }
 
@@ -62,7 +62,43 @@ What if you want to use some pools in a specific scene? Manually creating and re
 
 It is recommended to create all objects by using `Pooler`, because it works with [`Updater`](updater.md) and initializes objects to work properly with Toolbox.
 
-An alternative to Unity's basic `Instantiate(...)` method is `Pooler.Instantiate(...)`. Use it when you need to create an object without using a pool.
+An alternative to Unity's basic `Instantiate(...)` method is `Pooler.Create(...)`. Use it when you need to create an object without using a pool.
+
+## Spawn and instantiate actions
+
+If you want to make preparations to game objects every time they spawn or only when they are initially created, you can use the following methods:
+
+- `SetSpawnAction`: Provides the game object right before it spawns from the pooler.
+
+    ```C#
+    ...
+
+    private void Awake()
+    {
+        _Pool.SetSpawnAction(OnGameObjectSpawn);
+    }
+
+    private void OnGameObjectSpawn(GameObject go)
+    {
+        // Perform spawn setup for the game object
+    }
+
+    ...
+    ```
+
+- `SetInstantiateAction`: Provides the game object right before it is added to the pool. This occurs when the pooler initializes and creates game objects to fill its size, and when you are out of pooled objects and need to create a new game object.
+
+    ```C#
+    private void Awake()
+    {
+        _Pool.SetInstantiateAction(OnGameObjectInstantiate);
+    }
+
+    private void OnGameObjectInstantiate(GameObject go)
+    {
+        // Perform initial setup for the game object
+    }
+    ```
 
 ## Destroying objects
 
