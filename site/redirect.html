@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // Extract promo code from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const promo = urlParams.get('promo');
+        // Redirect to the app
+        window.location.href = `myalma://spectrum?promo=${promo}`;
+    </script>
+</head>
+<body>
+    <p>Redirecting to the app...</p>
+</body>
+</html>
