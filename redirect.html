@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // Extract promo code from URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const promo = urlParams.get('promo'); // Example: ?promo=my_promocode
+
+        if (promo) {
+            // Redirect to the deep link
+            window.location.href = `myalma://spectrum?promo=${encodeURIComponent(promo)}`;
+        } else {
+            document.body.innerHTML = '<p>Error: No promo code provided.</p>';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to the app...</p>
+</body>
+</html>
