@@ -1,0 +1,811 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation of GitHub projects">
+      
+      
+        <meta name="author" content="Gadzhi Eminov">
+      
+      
+      
+        <link rel="prev" href="../messenger/">
+      
+      
+        <link rel="next" href="../di/">
+      
+      
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Audio Player - VolumeBox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="VolumeBox" class="md-header__button md-logo" aria-label="VolumeBox" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VolumeBox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Audio Player
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="VolumeBox" class="md-nav__button md-logo" aria-label="VolumeBox" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    VolumeBox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Toolbox
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Toolbox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dependencies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../toolbox-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Toolbox Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monocached/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MonoCached
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../updater/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updater
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traveler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Traveler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pooler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pooler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../messenger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messenger
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Audio Player
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio Player
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-clips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Clips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-audio-clips-in-inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting Audio Clips in Inspector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-audios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing Audios
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../di/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using along with DI solutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-clips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Clips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-audio-clips-in-inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting Audio Clips in Inspector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-audios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing Audios
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Audio Player</h1>
+
+<h2 id="basics">Basics</h2>
+<p><code>AudioPlayer</code> allows you to structure sounds used in your project and manipulate them. It uses albums as containers for clips; each album can have its own audio source component bound and can be controlled through a mixer group.</p>
+<p>To configure the root for new audio sources and the default audio source, go to the 'MAIN' scene. In the <code>Audio Player</code> component of the 'Toolbox Container' game object, set everything as needed.</p>
+<p><img src="default_fields.png"></p>
+<h2 id="adding-clips">Adding Clips</h2>
+<p>To add an album, go to Toolbox settings and click on the 'Audio Player' tab. Here you can add a new album by clicking the 'Add Album' button. Enter its name and decide if you want to use a separate audio source or use the default. If you are using a separate source, you can define a mixer group for it if you want.</p>
+<p><img src="album_added.png"></p>
+<p>Each album has the following parameters:</p>
+<ul>
+<li><code>Album Name</code>: The name of the album, through which you can access the clips it contains.</li>
+<li><code>Use Separate Audio Source</code>: If enabled, Toolbox will create a separate audio source for this album.</li>
+<li><code>Mixer Group</code>: The mixer group through which you can control the volume, effects, etc., of the audio source bound to this album.</li>
+</ul>
+<p>To delete an album, click the button with the trash icon.</p>
+<p>After setting up the album, click on the 'Add Clip' button to add a new audio clip. Enter its name, select the actual audio clip, and adjust the volume you want it to play with. You can also preview it by clicking the 'Play' button or stop playing by clicking the 'Stop' button below the 'Play' button or right after the 'Add Album' button.</p>
+<p><img src="album_filled.png"></p>
+<p>Each clip has the following parameters:</p>
+<ul>
+<li><code>Clip ID</code>: The ID of the clip, through which you can retrieve it.</li>
+<li><code>Audio Clip</code>: The actual audio clip asset.</li>
+</ul>
+<p>To delete a clip, click the button with the trash icon.</p>
+<h2 id="selecting-audio-clips-in-inspector">Selecting Audio Clips in Inspector</h2>
+<p>To easily choose which clip you want to play, you can expose a string field by adding the <code>[AudioPlayerClip]</code> tag.</p>
+<p><img src="selecting_clip.png"></p>
+<p>There you can select an album and clip or enter it manually by clicking the button with the pen icon. To end manual editing, click the button again.</p>
+<h2 id="playing-audios">Playing Audios</h2>
+<p>To play audio, you can call one of the following methods:</p>
+<ul>
+<li><code>AudioPlayer.Play(album, id, volume, pitch, loop, playType)</code>:<ul>
+<li><code>album</code>: The album name.</li>
+<li><code>id</code>: The clip name.</li>
+<li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
+<li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
+<li><code>loop</code>: Whether the audio clip will be looped (default = false).</li>
+<li><code>playType</code>: The play behavior (default = ONE_SHOT):<ul>
+<li><code>ONE_SHOT</code>: Plays the clip even if another clip is playing.</li>
+<li><code>STOP_THEN_PLAY</code>: Stops the current playing clip if there is one and then plays the provided clip.</li>
+<li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>AudioPlayer.Play(album, clip, volume, pitch, loop, playType)</code>:<ul>
+<li><code>source</code>: The album name.</li>
+<li><code>id</code>: The audio clip.</li>
+<li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
+<li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
+<li><code>loop</code>: Whether the audio clip will be looped (default = false).</li>
+<li><code>playType</code>: The play behavior (default = ONE_SHOT):<ul>
+<li><code>ONE_SHOT</code>: Plays the clip even if another clip is playing.</li>
+<li><code>STOP_THEN_PLAY</code>: Stops the current playing clip if there is one and then plays the provided clip.</li>
+<li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>AudioPlayer.Play(audioSource, clip, volume, pitch, loop, playType)</code>:<ul>
+<li><code>source</code>: The audio source.</li>
+<li><code>id</code>: The audio clip.</li>
+<li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
+<li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
+<li><code>loop</code>: Whether the audio clip will be looped (default = false).</li>
+<li><code>playType</code>: The play behavior (default = ONE_SHOT):<ul>
+<li><code>ONE_SHOT</code>: Plays the clip even if another clip is playing.</li>
+<li><code>STOP_THEN_PLAY</code>: Stops the current playing clip if there is one and then plays the provided clip.</li>
+<li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>AudioPlayer.PlayFormatted(formattedId, volume, pitch, loop, playType)</code>:<ul>
+<li><code>formattedId</code>: A string in the format "[Album_Name]/[Clip_ID]".</li>
+<li>Use this method to play clips you selected through the inspector.</li>
+</ul>
+</li>
+</ul>
+<p>Notice that you can play audio clips that is not defined in the album by passing album name to use it's audio source and actual audio clip. Or you can define your own audio source to play clip.</p>
+<p>By default, in all methods above, the volume parameter is set to -1. By doing this, <code>AudioPlayer</code> will choose the volume you set up in the related clip in the Audio Player tab in Toolbox Settings. Otherwise, it will use the value you provided.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
