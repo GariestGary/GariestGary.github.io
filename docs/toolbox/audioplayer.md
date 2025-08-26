@@ -43,8 +43,8 @@ There you can select an album and clip or enter it manually by clicking the butt
 
 To play audio, you can call one of the following methods:
 
-- `AudioPlayer.Play(source, id, volume, pitch, loop, playType)`:
-	- `source`: The album name.
+- `AudioPlayer.Play(album, id, volume, pitch, loop, playType)`:
+	- `album`: The album name.
 	- `id`: The clip name.
 	- `volume`: The volume of the AudioSource component (default = 1).
 	- `pitch`: The pitch of the AudioSource component (default = 1).
@@ -53,9 +53,30 @@ To play audio, you can call one of the following methods:
 		- `ONE_SHOT`: Plays the clip even if another clip is playing.
 		- `STOP_THEN_PLAY`: Stops the current playing clip if there is one and then plays the provided clip.
 		- `NO_INTERRUPT`: Does nothing if another clip is currently playing; otherwise, plays it normally.
-	- This method has overloads that allow you to manually provide an AudioSource or AudioClip to play.
+- `AudioPlayer.Play(album, clip, volume, pitch, loop, playType)`:
+	- `source`: The album name.
+	- `id`: The audio clip.
+	- `volume`: The volume of the AudioSource component (default = 1).
+	- `pitch`: The pitch of the AudioSource component (default = 1).
+	- `loop`: Whether the audio clip will be looped (default = false).
+	- `playType`: The play behavior (default = ONE_SHOT):
+		- `ONE_SHOT`: Plays the clip even if another clip is playing.
+		- `STOP_THEN_PLAY`: Stops the current playing clip if there is one and then plays the provided clip.
+		- `NO_INTERRUPT`: Does nothing if another clip is currently playing; otherwise, plays it normally.
+- `AudioPlayer.Play(audioSource, clip, volume, pitch, loop, playType)`:
+	- `source`: The audio source.
+	- `id`: The audio clip.
+	- `volume`: The volume of the AudioSource component (default = 1).
+	- `pitch`: The pitch of the AudioSource component (default = 1).
+	- `loop`: Whether the audio clip will be looped (default = false).
+	- `playType`: The play behavior (default = ONE_SHOT):
+		- `ONE_SHOT`: Plays the clip even if another clip is playing.
+		- `STOP_THEN_PLAY`: Stops the current playing clip if there is one and then plays the provided clip.
+		- `NO_INTERRUPT`: Does nothing if another clip is currently playing; otherwise, plays it normally.
 - `AudioPlayer.PlayFormatted(formattedId, volume, pitch, loop, playType)`:
 	- `formattedId`: A string in the format "[Album_Name]/[Clip_ID]".
 	- Use this method to play clips you selected through the inspector.
+
+Notice that you can play audio clips that is not defined in the album by passing album name to use it's audio source and actual audio clip. Or you can define your own audio source to play clip.
 
 By default, in all methods above, the volume parameter is set to -1. By doing this, `AudioPlayer` will choose the volume you set up in the related clip in the Audio Player tab in Toolbox Settings. Otherwise, it will use the value you provided.

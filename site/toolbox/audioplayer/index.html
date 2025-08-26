@@ -672,8 +672,8 @@
 <h2 id="playing-audios">Playing Audios</h2>
 <p>To play audio, you can call one of the following methods:</p>
 <ul>
-<li><code>AudioPlayer.Play(source, id, volume, pitch, loop, playType)</code>:<ul>
-<li><code>source</code>: The album name.</li>
+<li><code>AudioPlayer.Play(album, id, volume, pitch, loop, playType)</code>:<ul>
+<li><code>album</code>: The album name.</li>
 <li><code>id</code>: The clip name.</li>
 <li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
 <li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
@@ -684,7 +684,34 @@
 <li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
 </ul>
 </li>
-<li>This method has overloads that allow you to manually provide an AudioSource or AudioClip to play.</li>
+</ul>
+</li>
+<li><code>AudioPlayer.Play(album, clip, volume, pitch, loop, playType)</code>:<ul>
+<li><code>source</code>: The album name.</li>
+<li><code>id</code>: The audio clip.</li>
+<li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
+<li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
+<li><code>loop</code>: Whether the audio clip will be looped (default = false).</li>
+<li><code>playType</code>: The play behavior (default = ONE_SHOT):<ul>
+<li><code>ONE_SHOT</code>: Plays the clip even if another clip is playing.</li>
+<li><code>STOP_THEN_PLAY</code>: Stops the current playing clip if there is one and then plays the provided clip.</li>
+<li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>AudioPlayer.Play(audioSource, clip, volume, pitch, loop, playType)</code>:<ul>
+<li><code>source</code>: The audio source.</li>
+<li><code>id</code>: The audio clip.</li>
+<li><code>volume</code>: The volume of the AudioSource component (default = 1).</li>
+<li><code>pitch</code>: The pitch of the AudioSource component (default = 1).</li>
+<li><code>loop</code>: Whether the audio clip will be looped (default = false).</li>
+<li><code>playType</code>: The play behavior (default = ONE_SHOT):<ul>
+<li><code>ONE_SHOT</code>: Plays the clip even if another clip is playing.</li>
+<li><code>STOP_THEN_PLAY</code>: Stops the current playing clip if there is one and then plays the provided clip.</li>
+<li><code>NO_INTERRUPT</code>: Does nothing if another clip is currently playing; otherwise, plays it normally.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>AudioPlayer.PlayFormatted(formattedId, volume, pitch, loop, playType)</code>:<ul>
@@ -693,6 +720,7 @@
 </ul>
 </li>
 </ul>
+<p>Notice that you can play audio clips that is not defined in the album by passing album name to use it's audio source and actual audio clip. Or you can define your own audio source to play clip.</p>
 <p>By default, in all methods above, the volume parameter is set to -1. By doing this, <code>AudioPlayer</code> will choose the volume you set up in the related clip in the Audio Player tab in Toolbox Settings. Otherwise, it will use the value you provided.</p>
 
 

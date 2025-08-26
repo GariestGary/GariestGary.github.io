@@ -4,9 +4,13 @@ Once you install the package, you will see the setup screen:
 
 If you don't see it, you can open it from `Toolbox/Setup Screen`.
 
-First, you need to initialize the main scene. Click the 'Initialize Main Scene' button to do this. This will add the 'MAIN' scene to the `Assets/Scenes/` folder and include it in the build settings scenes list.
+First of all you need to initialize the main scene. Click the 'Initialize Main Scene' button to do this. This will add the 'MAIN' scene to the `Assets/Scenes/` folder and include it in the build settings scenes list.
 
-Next, you need to create some settings data. Click 'Create Settings Data' to do this.
+<img src="initialize_main_scene_button.png">
+
+Toolbox requires some configuration assets to be added into resources folder. To do this simply click 'Create Settings Data', it will create required files automatically.
+
+<img src="create_settings_data_button.png">
 
 By default, the 'MAIN' scene should look like this:
 

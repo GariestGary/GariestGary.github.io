@@ -1,11 +1,11 @@
-##Basics
+## Basics
 
 Toolbox implements a publisher-subscriber pattern, that allows you to write minimally coupled code in fewer lines. 
 You can read more about publisher-subscriber pattern [Here](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern).
 
 To use this pattern you need to work with `Messenger` class, which allows you to subscribe and send messages by calling `Messenger.Subscribe<T>(...)` and `Messenger.Send<T>()` correspondingly.
 
-##Message
+## Message
 
 To work with messages you need to create one. `Message` is a basic class for all messages, just derive your message from it, add fields and properties and that's it.
 
@@ -18,7 +18,7 @@ public class EnemyDiedMessage: Message
 }
 ```
 
-##Subscribing
+## Subscribing
 
 To subscribe to a message, you need provide its type and a callback to a `Messenger.Subscribe<T>(...)` method.
 
@@ -44,7 +44,12 @@ private void OnEnemyDied(Enemy enemy)
 ...
 ```
 
-##Sending
+You can provide type you need in two ways:
+
+1. By passing type as Generic argument: `Toolbox.Messenger.Subscribe<SomeMessage>(...)`
+2. By passing type directly (in case you have instance of a message you want to subscribe to): `Toolbox.Messenger.Subscribe(_someMessage.GetType(), ...)`
+
+## Sending
 
 You can send messages in several ways:
 
@@ -60,7 +65,7 @@ Toolbox.Messenger.Send<PlayerReloadingMessage>();
 ...
 ```
 
-###By instance
+### By instance
 If you want to pass additional data to a message, you need to create an instance of it and provide it as a parameter.
 
 ```C#
@@ -71,7 +76,7 @@ Toolbox.Messenger.Send(new EnemyDiedMessage { enemy = this });
 ...
 ```
 
-###By cached variable
+### By cached variable
 
 If you often send a one type of message with different data, you can cache it and send it without creating a new instance.
 
@@ -95,7 +100,31 @@ public void OnXpGained(int amount)
 ...
 ```
 
-##Binding
+## Subscriber object
+
+Every time you subscribing to a message by `Subscribe` method it returns `Subscriber` object, which defines this subscription. You can use it to manually unsubscribe from it.
+
+```C#
+...
+private Subscriber _damageTakenSubscriber;
+...
+public void Awake()
+{
+    _damageTakenSubscriber = Toolbox.Messenger.Subscribe<DamageTakenMessage>(...);
+}
+...
+public void OnDestroy()
+{
+    Toolbox.Messenger.RemoveSubscriber(_damageTakenSubscriber);
+}
+
+```
+
+You can also remove list or array of subscribers by calling `Toolbox.Messenger.RemoveSubscribers(_listOfSubscribers)`.
+
+To remove all subscribers just call `Toolbox.Messenger.ClearSubscribers()`.
+
+## Binding
 
 You can bind your subscribe to a gameobject lifetime, so it will be automatically removed if gameobject destroyed to prevent memory leaks and errors. Just provide gameobject you want to bind as second parameter.
 
